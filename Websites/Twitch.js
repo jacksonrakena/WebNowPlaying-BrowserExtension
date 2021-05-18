@@ -21,19 +21,20 @@ function setup()
 	};
 	twitchInfoHandler.title = function()
 	{
-		return document.querySelector("h2.tw-ellipsis").title;
+		return document.querySelector("h2.sc-AxirZ").title;
 	};
 	twitchInfoHandler.artist = function()
 	{
-		return document.querySelector("h1.tw-c-text-base").innerText;
+		return document.querySelector("h1.tw-title").innerText;
 	};
 	twitchInfoHandler.album = function()
 	{
-		return document.querySelector("span.tw-font-size-5").innerText;
+		return document.querySelector("span.jQtUJo").innerText;
 	};
 	twitchInfoHandler.cover = function()
 	{
-		return document.querySelector(".tw-avatar--size-64 > img:nth-child(1)").src.replace("70x70", "600x600");
+		// Patch job to get cover photo
+		return document.querySelector(".IuKGg > img:nth-child(1)").src.replace("70x70", "600x600");
 	};
 	twitchInfoHandler.duration = function()
 	{
