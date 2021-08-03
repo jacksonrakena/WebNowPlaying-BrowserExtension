@@ -21,7 +21,7 @@ function setup()
 	};
 	twitchInfoHandler.title = function()
 	{
-		return document.querySelector("h2.sc-AxirZ").title;
+		return document.querySelector("h2.sc-AxgMl").title;
 	};
 	twitchInfoHandler.artist = function()
 	{
@@ -29,12 +29,11 @@ function setup()
 	};
 	twitchInfoHandler.album = function()
 	{
-		return document.querySelector("span.jQtUJo").innerText;
+		return document.querySelector("span.ixqNCT").innerText;
 	};
 	twitchInfoHandler.cover = function()
 	{
-		// Patch job to get cover photo
-		return document.querySelector(".IuKGg > img:nth-child(1)").src.replace("70x70", "600x600");
+		return document.querySelector("figure.kEuPYU > img:nth-child(1)").src.replace("70x70", "600x600");
 	};
 	twitchInfoHandler.duration = function()
 	{
@@ -42,13 +41,18 @@ function setup()
 		//I may want to cache this so we always get 100 since some time will pass between calls
 		if(document.getElementsByTagName("video")[0].duration == "1073741824")
 		{
-			return document.getElementsByTagName("video")[0].currentTime
+			var duration_read = document.querySelector("span.live-time").innerText.split(":"); duration_read.reverse(); duration=0; for (let i=duration_read.length-1; i >= 0; i--) {
+				duration = duration + Number(duration_read[i])*(60**i)}
+			return String(duration)
 		}
 		return document.getElementsByTagName("video")[0].duration;
 	};
 	twitchInfoHandler.position = function()
 	{
-		return document.getElementsByTagName("video")[0].currentTime;
+		// return document.getElementsByTagName("video")[0].currentTime;
+		var duration_read = document.querySelector("span.live-time").innerText.split(":"); duration_read.reverse(); duration=0; for (let i=duration_read.length-1; i >= 0; i--) {
+			duration = duration + Number(duration_read[i])*(60**i)}
+		return String(duration)
 	};
 	twitchInfoHandler.volume = function()
 	{
