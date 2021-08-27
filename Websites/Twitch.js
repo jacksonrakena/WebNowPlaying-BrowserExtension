@@ -21,7 +21,7 @@ function setup()
 	};
 	twitchInfoHandler.title = function()
 	{
-		return document.querySelector("h2.sc-AxgMl").title;
+		return document.querySelector("h2.CoreText-sc-cpl358-0").title;
 	};
 	twitchInfoHandler.artist = function()
 	{
