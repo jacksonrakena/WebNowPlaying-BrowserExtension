@@ -33,13 +33,13 @@ function setup()
 	};
 	twitchInfoHandler.cover = function()
 	{
-		return document.querySelector("figure.kEuPYU > img:nth-child(1)").src.replace("70x70", "600x600");
+		return document.querySelector("figure.tLGH > img:nth-child(1)").src.replace("70x70", "600x600");
 	};
 	twitchInfoHandler.duration = function()
 	{
 		//If the duration is 1073741824 then it is a live video and we should just return the current time
 		//I may want to cache this so we always get 100 since some time will pass between calls
-		if(document.getElementsByTagName("video")[0].duration == "1073741824")
+		if (document.getElementsByTagName("video")[0].duration == "1073741824")
 		{
 			var duration_read = document.querySelector("span.live-time").innerText.split(":"); duration_read.reverse(); duration=0; for (let i=duration_read.length-1; i >= 0; i--) {
 				duration = duration + Number(duration_read[i])*(60**i)}
@@ -49,10 +49,14 @@ function setup()
 	};
 	twitchInfoHandler.position = function()
 	{
-		// return document.getElementsByTagName("video")[0].currentTime;
-		var duration_read = document.querySelector("span.live-time").innerText.split(":"); duration_read.reverse(); duration=0; for (let i=duration_read.length-1; i >= 0; i--) {
-			duration = duration + Number(duration_read[i])*(60**i)}
-		return String(duration)
+		if (document.getElementsByTagName("video")[0].duration == "1073741824") {
+			var duration_read = document.querySelector("span.live-time").innerText.split(":"); duration_read.reverse(); duration=0; for (let i=duration_read.length-1; i >= 0; i--) {
+				duration = duration + Number(duration_read[i])*(60**i)}
+			return String(duration)
+		}
+		else {
+			return document.getElementsByTagName("video")[0].currentTime;
+		}
 	};
 	twitchInfoHandler.volume = function()
 	{
